@@ -1,4 +1,4 @@
-using JWTAuthAPI.Models;
+﻿using JWTAuthAPI.Models;
 using JWTAuthAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -54,6 +54,23 @@ namespace JWTAuthAPI.Controllers
             {
                 AccessToken = authResponse.AccessToken,
                 RefreshToken = authResponse.RefreshToken
+            });
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh([FromBody] RefreshTokenRequest request)
+        {
+            var refreshResponse = await _identityService.RefreshTokenAsync(request.AccessToken, request.RefreshToken);
+
+            if (!refreshResponse.Success)
+            {
+                return BadRequest(refreshResponse.Errors);
+            }
+
+            return Ok(new AuthResponse
+            {
+                AccessToken = refreshResponse.AccessToken,
+                RefreshToken = refreshResponse.RefreshToken
             });
         }
     }
