@@ -80,7 +80,6 @@ namespace JWTAuthAPI.Services
         public async Task<AuthenticationResult> RefreshTokenAsync(string accessToken, string refreshToken)
         {
             var validatedToken = GetPrincipalFromAccessToken(accessToken);
-
             if (validatedToken == null)
             {
                 return new AuthenticationResult { Errors = new[] { "Invalid access token" } };
@@ -90,24 +89,12 @@ namespace JWTAuthAPI.Services
             var userId = validatedToken.Claims.Single(x => x.Type == "userId").Value;
             var storedRefreshToken = await _context.RefreshTokens.SingleOrDefaultAsync(x => x.Token == refreshToken && x.UserId == userId);
 
-            if (storedRefreshToken == null)
+            if (storedRefreshToken == null ||
+                DateTime.UtcNow > storedRefreshToken.ExpiryDate ||
+                storedRefreshToken.Invalidated ||
+                storedRefreshToken.AccessTokenId != jti)
             {
-                return new AuthenticationResult { Errors = new[] { "This refresh token does not exist" } };
-            }
-
-            if (DateTime.UtcNow > storedRefreshToken.ExpiryDate)
-            {
-                return new AuthenticationResult { Errors = new[] { "This refresh token has expired" } };
-            }
-
-            if (storedRefreshToken.Invalidated)
-            {
-                return new AuthenticationResult { Errors = new[] { "This token has been invalidated" } };
-            }
-
-            if (storedRefreshToken.AccessTokenId != jti)
-            {
-                return new AuthenticationResult { Errors = new[] { "This token does not match the given access token" } };
+                return new AuthenticationResult { Errors = new[] { "Token refresh failed" } };
             }
 
             _context.RefreshTokens.Remove(storedRefreshToken);
