@@ -4,8 +4,8 @@
     {
         public string Secret { get; set; }
 
-        public double AccessTokenLifetime { get; set; }
+        public double AccessTokenLifetimeMinutes { get; set; }
 
-        public double RefreshTokenLifetime { get; set; }
+        public double RefreshTokenLifetimeDays { get; set; }
     }
 }
