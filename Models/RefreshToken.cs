@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace JWTAuthAPI.Models.Authentication
+namespace JWTAuthAPI.Models
 {
     public class RefreshToken
     {

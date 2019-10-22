@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JWTAuthAPI.Models
+namespace JWTAuthAPI.Models.Authentication
 {
     public class UserRegistrationRequest
     {

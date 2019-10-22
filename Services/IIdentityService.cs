@@ -1,5 +1,5 @@
-﻿using JWTAuthAPI.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using JWTAuthAPI.Models.Authentication;
 
 namespace JWTAuthAPI.Services
 {

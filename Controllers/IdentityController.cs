@@ -1,5 +1,4 @@
-﻿using JWTAuthAPI.Models;
-using JWTAuthAPI.Services;
+﻿using JWTAuthAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;

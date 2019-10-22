@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace JWTAuthAPI.Models
+﻿namespace JWTAuthAPI.Models.Authentication
 {
     public class UserLoginRequest
     {
