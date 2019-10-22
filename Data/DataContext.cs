@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using JWTAuthAPI.Models.Authentication;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,7 @@ namespace JWTAuthAPI.Data
             : base(options)
         {
         }
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
