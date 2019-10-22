@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using JWTAuthAPI.Models.Authentication;
 
-namespace JWTAuthAPI.Services
+namespace JWTAuthAPI.Services.IdentityService
 {
     public interface IIdentityService
     {

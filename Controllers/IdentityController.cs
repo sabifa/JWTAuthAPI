@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 using JWTAuthAPI.Models.Authentication;
+using JWTAuthAPI.Services.IdentityService;
 
 namespace JWTAuthAPI.Controllers
 {
