@@ -30,7 +30,7 @@ namespace JWTAuthAPI.Controllers
 
             if (!authResponse.Success)
             {
-                return BadRequest(authResponse.Errors);
+                return Unauthorized(authResponse.Errors);
             }
 
             return Ok(new AuthResponse
@@ -47,7 +47,7 @@ namespace JWTAuthAPI.Controllers
 
             if (!authResponse.Success)
             {
-                return BadRequest(authResponse.Errors);
+                return Unauthorized(authResponse.Errors);
             }
 
             return Ok(new AuthResponse
@@ -64,7 +64,7 @@ namespace JWTAuthAPI.Controllers
 
             if (!refreshResponse.Success)
             {
-                return BadRequest(refreshResponse.Errors);
+                return Unauthorized(refreshResponse.Errors);
             }
 
             return Ok(new AuthResponse

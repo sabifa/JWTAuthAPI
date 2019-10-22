@@ -7,6 +7,6 @@ namespace JWTAuthAPI.Services
     {
         Task<AuthenticationResult> RegisterAsync(string email, string password);
         Task<AuthenticationResult> LoginAsync(string email, string password);
-        Task<AuthenticationResult> RefreshTokenAsync(string requestAccessToken, string requestRefreshToken);
+        Task<AuthenticationResult> RefreshTokenAsync(string acessToken, string requestRefreshToken);
     }
 }
