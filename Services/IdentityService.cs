@@ -92,7 +92,7 @@ namespace JWTAuthAPI.Services
             return new AuthenticationResult
             {
                 Success = true,
-                Token = tokenHandler.WriteToken(token),
+                AccessToken = tokenHandler.WriteToken(token),
             };
         }
     }

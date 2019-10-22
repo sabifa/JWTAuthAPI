@@ -7,7 +7,9 @@ namespace JWTAuthAPI.Models
 {
     public class AuthenticationResult
     {
-        public string Token { get; set; }
+        public string AccessToken { get; set; }
+
+        public string RefreshToken { get; set; }
 
         public bool Success { get; set; }
 
