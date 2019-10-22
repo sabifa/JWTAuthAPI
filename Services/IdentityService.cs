@@ -123,13 +123,9 @@ namespace JWTAuthAPI.Services
 
             try
             {
-                var principal = tokenHandler.ValidateToken(token, _tokenValidationParameters, out var validatedToken);
-                if (!IsJwtWithValidSecurityAlgorithm(validatedToken))
-                {
-                    return null;
-                }
-
-                return principal;
+                var tokenValidationParameters = _tokenValidationParameters.Clone();
+                tokenValidationParameters.ValidateLifetime = false;
+                return tokenHandler.ValidateToken(token, tokenValidationParameters, out _);
             }
             catch
             {
