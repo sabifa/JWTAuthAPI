@@ -6,7 +6,7 @@ namespace JWTAuthAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class TestController : ControllerBase
     {
         [HttpGet]
