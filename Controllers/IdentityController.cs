@@ -1,8 +1,9 @@
-﻿using JWTAuthAPI.Models;
+using JWTAuthAPI.Models;
 using JWTAuthAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using JWTAuthAPI.Models.Authentication;
 
 namespace JWTAuthAPI.Controllers
 {
@@ -32,7 +33,11 @@ namespace JWTAuthAPI.Controllers
                 return BadRequest(authResponse.Errors);
             }
 
-            return Ok(authResponse.Token);
+            return Ok(new AuthResponse
+            {
+                AccessToken = authResponse.AccessToken,
+                RefreshToken = authResponse.RefreshToken
+            });
         }
 
         [HttpPost("login")]
@@ -45,7 +50,11 @@ namespace JWTAuthAPI.Controllers
                 return BadRequest(authResponse.Errors);
             }
 
-            return Ok(authResponse.Token);
+            return Ok(new AuthResponse
+            {
+                AccessToken = authResponse.AccessToken,
+                RefreshToken = authResponse.RefreshToken
+            });
         }
     }
 }
