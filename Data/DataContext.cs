@@ -1,4 +1,4 @@
-﻿using JWTAuthAPI.Models;
+﻿using JWTAuthAPI.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

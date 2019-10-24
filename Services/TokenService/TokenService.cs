@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using JWTAuthAPI.Data;
-using JWTAuthAPI.Models;
+using JWTAuthAPI.Entities;
 using JWTAuthAPI.Models.Authentication;
 using JWTAuthAPI.Settings;
 using Microsoft.AspNetCore.Identity;

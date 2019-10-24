@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace JWTAuthAPI.Models
+namespace JWTAuthAPI.Entities
 {
     public class RefreshToken
     {
