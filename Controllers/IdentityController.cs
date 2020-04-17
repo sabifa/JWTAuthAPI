@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
 using JWTAuthAPI.Models.Authentication;
 using JWTAuthAPI.Services.IdentityService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JWTAuthAPI.Controllers
 {
@@ -18,6 +18,7 @@ namespace JWTAuthAPI.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] UserRegistrationRequest request)
         {
             var authResponse = await _identityService.RegisterAsync(request.Email, request.Password);
@@ -35,6 +36,7 @@ namespace JWTAuthAPI.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserLoginRequest request)
         {
             var authResponse = await _identityService.LoginAsync(request.Email, request.Password);
@@ -52,6 +54,7 @@ namespace JWTAuthAPI.Controllers
         }
 
         [HttpPost("refresh")]
+        [AllowAnonymous]
         public async Task<IActionResult> Refresh([FromBody] RefreshTokenRequest request)
         {
             var refreshResponse = await _identityService.RefreshTokenAsync(request.AccessToken, request.RefreshToken);

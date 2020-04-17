@@ -15,6 +15,8 @@ using System.Text;
 using JWTAuthAPI.Services.IdentityService;
 using JWTAuthAPI.Services.TokenService;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JWTAuthAPI
 {
@@ -43,6 +45,10 @@ namespace JWTAuthAPI
             services.AddMvc(options =>
                 {
                     options.EnableEndpointRouting = false;
+                    var policy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
                 });
 
             services.AddSwaggerGen(x =>
