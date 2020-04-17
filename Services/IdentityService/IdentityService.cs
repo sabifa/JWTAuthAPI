@@ -42,8 +42,9 @@ namespace JWTAuthAPI.Services.IdentityService
             };
 
             var createdUser = await _userManager.CreateAsync(user, password);
+            var roleAssignment = await _userManager.AddToRoleAsync(user, "User");
 
-            if (!createdUser.Succeeded)
+            if (!createdUser.Succeeded || !roleAssignment.Succeeded)
             {
                 return new AuthenticationResult
                 {
