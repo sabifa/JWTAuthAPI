@@ -15,7 +15,6 @@ using System.Text;
 using JWTAuthAPI.Services.IdentityService;
 using JWTAuthAPI.Services.TokenService;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace JWTAuthAPI
 {
@@ -65,8 +64,6 @@ namespace JWTAuthAPI
                     }}, new List<string>()}
                 });
             });
-
-
         }
 
         private void ConfigureAuthentication(IServiceCollection services)
