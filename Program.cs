@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using JWTAuthAPI.Models.ApplicationRole;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -16,15 +17,15 @@ namespace JWTAuthAPI
             {
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                if (!await roleManager.RoleExistsAsync("Admin"))
+                if (!await roleManager.RoleExistsAsync(ApplicationRole.Admin))
                 {
-                    var adminRole = new IdentityRole("Admin");
+                    var adminRole = new IdentityRole(ApplicationRole.Admin);
                     await roleManager.CreateAsync(adminRole);
                 }
 
-                if (!await roleManager.RoleExistsAsync("User"))
+                if (!await roleManager.RoleExistsAsync(ApplicationRole.User))
                 {
-                    var userRole = new IdentityRole("User");
+                    var userRole = new IdentityRole(ApplicationRole.User);
                     await roleManager.CreateAsync(userRole);
                 }
             }

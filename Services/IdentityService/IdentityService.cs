@@ -7,6 +7,7 @@ using JWTAuthAPI.Models.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using JWTAuthAPI.Services.TokenService;
+using JWTAuthAPI.Models.ApplicationRole;
 
 namespace JWTAuthAPI.Services.IdentityService
 {
@@ -42,7 +43,7 @@ namespace JWTAuthAPI.Services.IdentityService
             };
 
             var createdUser = await _userManager.CreateAsync(user, password);
-            var roleAssignment = await _userManager.AddToRoleAsync(user, "User");
+            var roleAssignment = await _userManager.AddToRoleAsync(user, ApplicationRole.User);
 
             if (!createdUser.Succeeded || !roleAssignment.Succeeded)
             {
