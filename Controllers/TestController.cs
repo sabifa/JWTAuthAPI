@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JWTAuthAPI.Controllers
 {
@@ -10,6 +11,13 @@ namespace JWTAuthAPI.Controllers
         public IActionResult Get()
         {
             return Ok(new { value = "API started" });
+        }
+
+        [HttpGet("admin")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult GetOnlyForAdmins()
+        {
+            return Ok(new { value = "API started, my Admin" });
         }
     }
 }
